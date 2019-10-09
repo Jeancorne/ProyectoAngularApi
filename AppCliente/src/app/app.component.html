@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="https://image.shutterstock.com/image-vector/user-icon-vector-260nw-393536320.jpg" width="30"
+            height="30" alt="">
+    </a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="navbar-brand" href="/">
+                    Inicio
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link">{{ title }} <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Logout <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" (click)="Redirect('Producto');">Agregar Producto <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                    <a class="nav-link" (click)="Redirect('');">Lista <span class="sr-only">(current)</span></a>
+                </li>
+        </ul>
+    </div>
+</nav>
+<br><br>
+<br>
+<br>
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-12 col-md-12 col-lg-10">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer style="margin-top:30%; background: #f8f9fa!important;" class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Development
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+<style>
+    a:hover{
+        cursor: pointer;
+        background: #dee2e6;
+        color: white;
+    }
+</style>

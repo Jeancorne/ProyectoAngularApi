@@ -1,0 +1,45 @@
+<div class="form-group">
+    <input class="form-control" id="strBuscar"  (keyup)="onKey($event)" placeholder="Buscar" type="text" ngbDatepicker />
+</div>
+
+<table mat-table matSort class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Correo Fabricante</th>
+
+            <th scope="col">Pais</th>
+            <th scope="col">Unidad Disponible </th>
+            <th scope="col">Unidad Vencida </th>
+            <th scope="col">Precio </th>
+            <th scope="col">Fecha Lanzamiento </th>
+            <th scope="col">Caracteristica </th>
+            <th scope="col">Imagen </th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of productoslist.products">
+            <th>{{ product.id }}</th>
+            <th>{{ product.nombre  }}</th>
+            <th>{{ product.correo_fabricante }}</th>
+            <th> {{ product.pais }} </th>
+            <th> {{ product.unidad_dispo }} </th>
+            <th> {{product.unidad_vendidas}} </th>
+            <th> {{product.precio}} </th>
+            <th> {{product.fecha_lanzamiento | date:'EEEE, MMMM d, y'}} </th>
+            <th> {{product.caracteristicas}} </th>
+            <th style="text-align: center;"> <img style="width:40%;" src="{{ product.imagen }}"> </th>
+            <th class="text-center">
+                <a data-toggle="tooltip" (click)="Redirect('Producto/',product.id);" data-placement="top"
+                    title="Edit user"><i class="fas fa-pen"></i></a>
+                &nbsp;
+                <a data-toggle="tooltip" (click)="DeletProduct(product.id);" data-placement="top" title="Remove user"><i
+                        class="fas fa-trash-alt"></i></a>
+            </th>
+            <!--  <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls> -->
+        </tr>
+    </tbody>
+
+</table>

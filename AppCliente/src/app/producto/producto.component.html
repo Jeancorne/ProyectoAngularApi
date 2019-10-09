@@ -1,0 +1,140 @@
+<div class="container">
+    <form #productForm="ngForm" (ngSubmit)="saveProduct(productForm)">
+
+        <ng-template [ngIf]="id" [ngIfElse]="NewProduct">
+
+            <div class="form-group">
+                <label for="NombreProducto">Nombre del producto</label>
+                <input type="text" #Nombre="ngModel" [(ngModel)]="servicesProducto.products.nombre" class="form-control"
+                    name="Nombre" id="NombreProducto" placeholder="Ingresa el producto">
+            </div>
+
+            <div class="form-group">
+                <label for="correo_fabricante">Correo Fabricante</label>
+                <input type="email" class="form-control" name="correo_fabricante" id="correo_fabricante"
+                    [(ngModel)]="servicesProducto.products.correo_fabricante" #precio="ngModel" placeholder="Ingresa Correo">
+            </div>
+            <div clas="form-group">
+                <label for="pais">Pais del fabricante:</label>  {{ servicesProducto.products.pais  }} &nbsp;               
+                <select class="form-control" id="pais" name="pais" #pais="ngModel" [(ngModel)]="servicesProducto.products.pais">                    
+                    <option *ngFor="let pais of servicesProducto.paisModel"   value="{{ pais.name }}" >
+                        {{ pais.name }}
+                    </option>
+                </select>
+            </div>
+            &nbsp;
+            <div class="form-group">
+                <label for="fecha_lanzamiento">Fecha de Lanzamiento: </label> &nbsp; {{ servicesProducto.products.fecha_lanzamiento }}
+                <input class="form-control" id="fecha_lanzamiento"  (click)="d.toggle()" #fecha_lanzamiento="ngModel"
+                    [(ngModel)]="servicesProducto.fecha_lanzamiento"
+                    (input)="demoUser.date=parseDate($event.target.value)" readonly placeholder="yyyy-mm-dd"
+                    name="fecha_lanzamiento" type="text" ngbDatepicker #d="ngbDatepicker" />
+            </div>
+            <div class="form-group">
+                <label for="unidad_dispo">Unidades Disponibles </label> &nbsp;
+                <input class="form-control" id="unidad_dispo" type="number" name="unidad_dispo" #unidad_dispo="ngModel"
+                    [(ngModel)]="servicesProducto.products.unidad_dispo" />
+            </div>
+            <div class="form-group">
+                <label for="unidad_vendidas">Unidades Vendidas </label> &nbsp;
+                <input class="form-control" id="unidad_vendidas" type="number" name="unidad_vendidas"
+                    #unidad_vendidas="ngModel" [(ngModel)]="servicesProducto.products.unidad_vendidas" />
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio </label> &nbsp;
+                <input class="form-control" id="precio" (keyup)="onKey($event)" name="precio" format="currency"
+                    #precio="ngModel" [(ngModel)]="servicesProducto.products.precio" />
+                <pre> {{  newvalue  }} </pre>
+            </div>
+            <div class="form-group">
+                <label for="caracteristicas">Caracteristicas</label>
+                <textarea class="form-control rounded-0" name="caracteristicas" #caracteristicas="ngModel"
+                    [(ngModel)]="servicesProducto.products.caracteristicas" id="caracteristicas" rows="6"></textarea>
+
+            </div>
+            <div class="form-group">
+                <label for="UnidadesVendidas">Imagen del Producto </label> &nbsp;
+                <input type="file" (change)="fileChange($event)" name="imagen" id="imagen"><br>
+                <br>
+                <img src="{{servicesProducto.products.imagen}}" >
+            </div>
+            <br>
+            <br>
+
+
+        </ng-template>
+
+        <ng-template #NewProduct>
+            <div class="form-group">
+                <label for="NombreProducto">Nombre del producto</label>
+                <input type="text" #Nombre="ngModel" [(ngModel)]="servicesProducto.Nombre" class="form-control"
+                    name="Nombre" id="NombreProducto" placeholder="Ingresa el producto">
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="correo_fabricante">Correo Fabricante</label>
+                <input type="email" class="form-control" name="correo_fabricante" id="correo_fabricante"
+                    [(ngModel)]="servicesProducto.correo_fabricante" #precio="ngModel" placeholder="Ingresa Correo">
+            </div>
+            <div clas="form-group">
+                <label for="pais">Pais del fabricante</label> &nbsp;
+                <select class="form-control" id="pais" name="pais" #pais="ngModel" [(ngModel)]="servicesProducto.pais">
+                    <option *ngFor="let pais of servicesProducto.paisModel" value="{{ pais.name }}">
+                        {{ pais.name }}
+                    </option>
+                </select>
+            </div>
+            &nbsp;
+            <div class="form-group">
+                <label for="fecha_lanzamiento">Fecha de Lanzamiento </label> &nbsp;
+                <input class="form-control" id="fecha_lanzamiento" (click)="d.toggle()" #fecha_lanzamiento="ngModel"
+                    [(ngModel)]="servicesProducto.fecha_lanzamiento"
+                    (input)="demoUser.date=parseDate($event.target.value)" readonly placeholder="yyyy-mm-dd"
+                    name="fecha_lanzamiento" type="text" ngbDatepicker #d="ngbDatepicker" />
+            </div>
+            <div class="form-group">
+                <label for="unidad_dispo">Unidades Disponibles </label> &nbsp;
+                <input class="form-control" id="unidad_dispo" type="number" name="unidad_dispo" #unidad_dispo="ngModel"
+                    [(ngModel)]="servicesProducto.unidad_dispo" />
+            </div>
+            <div class="form-group">
+                <label for="unidad_vendidas">Unidades Vendidas </label> &nbsp;
+                <input class="form-control" id="unidad_vendidas" type="number" name="unidad_vendidas"
+                    #unidad_vendidas="ngModel" [(ngModel)]="servicesProducto.unidad_vendidas" />
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio </label> &nbsp;
+                <input class="form-control" id="precio" (keyup)="onKey($event)" name="precio" format="currency"
+                    #precio="ngModel" [(ngModel)]="servicesProducto.precio" />
+                <pre> {{  newvalue  }} </pre>
+            </div>
+            <div class="form-group">
+                <label for="caracteristicas">Caracteristicas</label>
+                <textarea class="form-control rounded-0" name="caracteristicas" #caracteristicas="ngModel"
+                    [(ngModel)]="servicesProducto.caracteristicas" id="caracteristicas" rows="6"></textarea>
+
+            </div>
+            <div class="form-group">
+                <label for="UnidadesVendidas">Imagen del Producto </label> &nbsp;
+                <input type="file" (change)="fileChange($event)" name="imagen" id="imagen">
+            </div>
+            <br>
+            <br>
+        </ng-template>
+
+
+        <ng-template [ngIf]="id" [ngIfElse]="Register">
+            <div style="text-align: center;" class="form-group">
+                <button style="width:40%;" type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+        </ng-template>
+        <ng-template #Register>
+            <div style="text-align: center;" class="form-group">
+                <button style="width:40%;" type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+        </ng-template>
+
+    </form>
+</div>
